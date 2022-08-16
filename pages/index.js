@@ -1,9 +1,15 @@
 import { Col, Row } from 'antd'
 import Head from 'next/head'
 import Image from 'next/image'
+import { useRouter } from 'next/router'
+import en from '../locales/en'
+import fr from '../locales/fr'
 import styles from '../styles/Home.module.css'
 
 export default function Home() {
+  const router = useRouter();
+  const {locale}= router;
+  const t= locale ==='en'? en: fr;
   return (
     <div className={styles.container}>
       <Head>
@@ -14,6 +20,7 @@ export default function Home() {
 
       <main className={styles.main}>
         <h1 className={styles.title}>
+          {t.header.title}
           Welcome to <a href="https://nextjs.org">Next.js!</a>
         </h1>
 
